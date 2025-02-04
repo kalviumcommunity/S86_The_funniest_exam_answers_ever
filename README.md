@@ -1,4 +1,4 @@
-# The Worst Exam Answers Ever 😆
+## The Worst Exam Answers Ever 😆
 
 ## Project Overview
 "The Funniest Exam Answers Ever" is a web-based platform that showcases some of the funniest and most ridiculous wrong answers students have given on exams. The goal is to entertain users with the most humorous and illogical answers. Users can browse, upvote their favorite fails, and even submit their own funny mistakes.
