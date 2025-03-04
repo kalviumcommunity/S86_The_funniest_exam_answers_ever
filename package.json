@@ -4,7 +4,8 @@
   "description": "\"The Funniest Exam Answers Ever\" is a web-based platform that showcases some of the funniest and most ridiculous wrong answers students have given on exams. The goal is to entertain users with the most humorous and illogical answers. Users can browse, upvote their favorite fails, and even submit their own funny mistakes.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "Sri charan",
