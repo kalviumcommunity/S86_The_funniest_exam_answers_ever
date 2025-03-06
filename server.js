@@ -9,6 +9,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("Server is running!!!");
 });
+app.get('/ping', (req, res) => {
+    res.json({ message: 'pong' });
+});
 
 // Users route (Fix: Make sure this exists!)
 app.get("/users", (req, res) => {
