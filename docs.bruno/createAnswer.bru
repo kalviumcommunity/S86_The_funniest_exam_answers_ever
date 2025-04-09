@@ -1,0 +1,27 @@
+meta {
+  name: createAnswer
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/answers
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "question": "What is the capital of France?",
+    "funny_answer": "F",
+    "student_name": "Rohan",
+    "subject": "Geography",
+    "upvotes": 0,
+    "uploaded_by": "Admin"
+  }
+  
+}

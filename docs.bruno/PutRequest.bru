@@ -1,0 +1,28 @@
+meta {
+  name: PutRequest
+  type: http
+  seq: 6
+}
+
+put {
+  url: http://localhost:3000/api/answers/67f6c5141aea6ab7f8242fab
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "_id": "67f6c5141aea6ab7f8242fab",
+    "question": "What is the capital of France?",
+    "funny_answer": "F",
+    "student_name": "Rohanshi",
+    "subject": "Geography",
+    "upvotes": 0,
+    "uploaded_by": "Admin",
+    "__v": 0
+  }
+}
