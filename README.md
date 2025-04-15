@@ -26,6 +26,12 @@
 - **Tech Learning** – Helps develop skills in full-stack web development, user authentication, and database management.
 
 
- ## Deployed Link:
+ ## Backend Deployed Link:
 
  (https://s86-the-funniest-exam-answers-ever.onrender.com)
+
+
+ ## Frontend Deployed Link:
+
+(the-funniest-exam-answers-ever-deployed.pages.dev)
+
