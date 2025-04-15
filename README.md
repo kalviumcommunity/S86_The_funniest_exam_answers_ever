@@ -33,5 +33,4 @@
 
  ## Frontend Deployed Link:
 
-(the-funniest-exam-answers-ever-deployed.pages.dev)
-
+(https://the-funniest-exam-answers-ever-deployed.pages.dev/)
