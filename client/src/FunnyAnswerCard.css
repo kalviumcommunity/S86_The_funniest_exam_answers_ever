@@ -1,0 +1,47 @@
+/* Center everything on the page */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Card styling */
+.card {
+  background-color: #fff;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.question {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.answer {
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.comment {
+  color: #889e57;
+  font-style: italic;
+}
+.name{
+  color:#0059ff;
+
+  
+}
