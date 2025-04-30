@@ -9,4 +9,4 @@ const funnyAnswerSchema = new mongoose.Schema({
   uploaded_by: String
 });
 
-module.exports = mongoose.model("FunnyAnswer", funnyAnswerSchema);
+module.exports = mongoose.model("FunnyAnswer", funnyAnswerSchema,'answers');

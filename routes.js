@@ -3,7 +3,7 @@ const router = express.Router();
 const FunnyAnswer = require("./models/FunnyAnswer");
 
 
-router.post("/answers", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const answer = new FunnyAnswer(req.body);
     await answer.save();
@@ -13,7 +13,7 @@ router.post("/answers", async (req, res) => {
   }
 });
 
-router.get("/answers", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const answers = await FunnyAnswer.find();
     res.json(answers);
@@ -22,7 +22,7 @@ router.get("/answers", async (req, res) => {
   }
 });
 
-router.get("/answers/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const answer = await FunnyAnswer.findById(req.params.id);
     res.json(answer);
@@ -31,7 +31,7 @@ router.get("/answers/:id", async (req, res) => {
   }
 });
 
-router.put("/answers/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const updated = await FunnyAnswer.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updated);
@@ -40,7 +40,7 @@ router.put("/answers/:id", async (req, res) => {
   }
 });
 
-router.delete("/answers/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     await FunnyAnswer.findByIdAndDelete(req.params.id);
     res.json({ message: "Answer deleted" });
