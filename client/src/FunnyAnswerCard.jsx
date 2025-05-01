@@ -8,7 +8,7 @@ const FunnyAnswerCard = ({ student, subject, question, answer }) => {
       <p><strong>Question:</strong> {question}</p>
       <p className="answer"><strong>Answer:</strong> {answer}</p>
     </div>
-  );
+  );  
 };
 
 export default FunnyAnswerCard;
