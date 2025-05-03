@@ -21,6 +21,41 @@ function App() {
     setAnswers((prevAnswers) => [...prevAnswers, newAnswer]);
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/answers/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setAnswers(prev => prev.filter(answer => answer._id !== id));
+        alert("Deleted successfully!");
+      } else {
+        console.error("Failed to delete.");
+      }
+    } catch (error) {
+      console.error('Error deleting:', error);
+    }
+  };
+
+  const handleUpdate = async (id, updatedData) => {
+    try {
+      const response = await fetch(`http://localhost:3000/answers/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedData),
+      });
+      if (response.ok) {
+        const updatedAnswer = await response.json();
+        setAnswers(prev => prev.map(ans => ans._id === id ? updatedAnswer : ans));
+        alert("Updated successfully!");
+      } else {
+        console.error("Failed to update.");
+      }
+    } catch (error) {
+      console.error('Error updating:', error);
+    }
+  };
+
   return (
     <div className='header'>
       <h1>Funniest Exam Answers Ever! 😂</h1>
@@ -32,10 +67,13 @@ function App() {
         {answers.map((item) => (
           <div className="grid-item" key={item._id}>
             <FunnyAnswerCard
+              id={item._id}
               student={item.student_name}
               subject={item.subject}
               question={item.question}
               answer={item.funny_answer}
+              onDelete={handleDelete}
+              onUpdate={handleUpdate}
             />
           </div>
         ))}
