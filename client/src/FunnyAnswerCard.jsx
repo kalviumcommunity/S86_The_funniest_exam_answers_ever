@@ -27,7 +27,7 @@ const FunnyAnswerCard = ({ id, student, subject, question, answer, onUpdate, onD
 
       if (response.ok) {
         const updated = await response.json();
-        onUpdate(updated); 
+        onUpdate(id, updated); 
         setIsEditing(false);
         alert('Entity updated successfully!');
       } else {
