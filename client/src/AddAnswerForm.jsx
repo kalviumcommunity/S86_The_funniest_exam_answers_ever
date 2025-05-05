@@ -6,6 +6,7 @@ function AddAnswerForm({ onAdd }) {
   const [subject, setSubject] = useState('');
   const [question, setQuestion] = useState('');
   const [funnyAnswer, setFunnyAnswer] = useState('');
+  const [createdBy, setCreatedBy] = useState(''); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +16,8 @@ function AddAnswerForm({ onAdd }) {
       subject: subject,
       question: question,
       funny_answer: funnyAnswer,
+      uploaded_by: "Admin", 
+      created_by: createdBy || "Anonymous" 
     };
 
     try {
@@ -28,12 +31,13 @@ function AddAnswerForm({ onAdd }) {
 
       if (response.ok) {
         const savedAnswer = await response.json();
-        onAdd(savedAnswer); // Update the list in App.jsx
-        // Clear the form
+        onAdd(savedAnswer); 
+ 
         setStudent('');
         setSubject('');
         setQuestion('');
         setFunnyAnswer('');
+        setCreatedBy('');
       } else {
         console.error('Failed to add new answer.');
       }
@@ -72,6 +76,15 @@ function AddAnswerForm({ onAdd }) {
         placeholder="Funny Answer"
         required
       />
+
+      <input
+        type="text"
+        value={createdBy}
+        onChange={(e) => setCreatedBy(e.target.value)}
+        placeholder="Created By (Your Name)"
+        required
+      />
+
       <button type="submit">Add Answer</button>
     </form>
   );

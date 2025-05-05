@@ -3,10 +3,10 @@ const router = express.Router();
 const FunnyAnswer = require("./models/FunnyAnswer");
 
 function validateAnswerInput(req, res, next) {
-  const { student_name, subject, question, funny_answer } = req.body;
+  const { student_name, subject, question, funny_answer, created_by } = req.body;
   
-  if (!student_name || !subject || !question || !funny_answer) {
-    return res.status(400).json({ error: "Name, Subject, Question, and Answer are required!" });
+  if (!student_name || !subject || !question || !funny_answer || !created_by) {
+    return res.status(400).json({ error: "Name, Subject, Question, Answer and created_by are required!" });
   }
   
   next(); 
@@ -53,7 +53,8 @@ router.put("/:id", validateAnswerInput, async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    await FunnyAnswer.findByIdAndDelete(req.params.id);
+    const deleted = await FunnyAnswer.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ error: "Answer not found for deletion" });
     res.json({ message: "Answer deleted" });
   } catch (err) {
     res.status(500).json({ error: err.message });

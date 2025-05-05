@@ -6,7 +6,8 @@ const funnyAnswerSchema = new mongoose.Schema({
   student_name: String,
   subject: String,
   upvotes: Number,
-  uploaded_by: String
+  uploaded_by: String,
+  created_by: String
 });
 
 module.exports = mongoose.model("FunnyAnswer", funnyAnswerSchema,'answers');

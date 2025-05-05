@@ -5,6 +5,7 @@ import './index.css';
 
 function App() {
   const [answers, setAnswers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(""); 
 
   const fetchAnswers = () => {
     fetch('http://localhost:3000/answers')
@@ -56,26 +57,44 @@ function App() {
     }
   };
 
+  const uniqueUsers = [...new Set(answers.map(ans => ans.created_by))].filter(user => user);
+
   return (
     <div className='header'>
       <h1>Funniest Exam Answers Ever! 😂</h1>
       <p className="subtitle">Welcome here!!! When life gives you wrong answers, make memes 🤪.</p>
 
+      <div className="filter-section">
+        <label htmlFor="userFilter">Filter by Creator: </label>
+        <select
+          id="userFilter"
+          value={selectedUser}
+          onChange={(e) => setSelectedUser(e.target.value)}
+        >
+          <option value="">All</option>
+          {uniqueUsers.map(user => (
+            <option key={user} value={user}>{user}</option>
+          ))}
+        </select>
+      </div>
+
       <AddAnswerForm onAdd={handleAddAnswer} />
 
       <div className="grid-container">
-        {answers.map((item) => (
-          <div className="grid-item" key={item._id}>
-            <FunnyAnswerCard
-              id={item._id}
-              student={item.student_name}
-              subject={item.subject}
-              question={item.question}
-              answer={item.funny_answer}
-              onDelete={handleDelete}
-              onUpdate={handleUpdate}
-            />
-          </div>
+        {answers
+          .filter(ans => !selectedUser || ans.created_by === selectedUser) 
+          .map((item) => (
+            <div className="grid-item" key={item._id}>
+              <FunnyAnswerCard
+                id={item._id}
+                student={item.student_name}
+                subject={item.subject}
+                question={item.question}
+                answer={item.funny_answer}
+                onDelete={handleDelete}
+                onUpdate={handleUpdate}
+              />
+            </div>
         ))}
       </div>
     </div>
