@@ -1,5 +1,8 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
+
+const SECRET_KEY = "IamBukka@19082006"; 
 
 router.post("/login", (req, res) => {
   const { username } = req.body;
@@ -8,17 +11,18 @@ router.post("/login", (req, res) => {
     return res.status(400).json({ error: "Username is required" });
   }
 
-  res.cookie("username", username, {
-    httpOnly: true, 
-    maxAge: 24 * 60 * 60 * 1000, 
+  const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: "1h" });
+
+  res.cookie("token", token, {
+    httpOnly: true,
   });
 
-  res.json({ message: `Welcome, ${username}! Cookie set.` });
+  res.json({ message: "Logged in successfully!" });
 });
 
 router.post("/logout", (req, res) => {
-  res.clearCookie("username");
-  res.json({ message: "Logged out and cookie cleared." });
+  res.clearCookie("token");
+  res.json({ message: "Logged out successfully!" });
 });
 
 module.exports = router;
